@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+//https://git.heroku.com/fullbackendapplication.git
 @RequestMapping("/")
 @CrossOrigin(origins = "*")
 @RestController
@@ -63,17 +63,18 @@ public class contoller {
         f.setUserid(services.usernamechecker(id).getUserid());
         return  f;
     }
-    @GetMapping("/searchusername")
+      @GetMapping("/searchusername")
     @ResponseBody
     public List<user> searchusername(@RequestParam String id) {
         return  (List<user>) services.seachusername(id);
     }
-    @GetMapping("/searchusername")
+   @GetMapping("/searchhashtag")
     @ResponseBody
     public List<hashtag> searchashtag(@RequestParam String id) {
         return  (List<hashtag>) services.seachhashtag(id);
     }
-    @PostMapping("/insertuser")
+
+   @PostMapping("/insertuser")
     @ResponseStatus(HttpStatus.CREATED)
     public user insertuser(@RequestBody user us) {
         return  (user) services.insertuser(us);
@@ -88,12 +89,12 @@ public class contoller {
     public post insertpost(@RequestBody post us) {
         return  (post) services.insertpost(us);
     }
-    @PostMapping("/updatepost")
+   @PostMapping("/updatepost")
     @ResponseStatus(HttpStatus.CREATED)
     public post updatepost(@RequestBody post us) {
         return  (post) services.updatepost(us);
     }
-    @GetMapping("/albumposts")
+     @GetMapping("/albumposts")
     @ResponseBody
     public List<post> albumposts(@RequestParam Long id) {
         return  (List<post>) services.postplaylist(id);
@@ -103,7 +104,7 @@ public class contoller {
     public post deletepost(@RequestParam Long id) {
         return  (post) services.deleteposts(id);
     }
-    @PostMapping("/insertalbum")
+   @PostMapping("/insertalbum")
     @ResponseStatus(HttpStatus.CREATED)
     public album insertalbum(@RequestBody album us) {
         return  (album) services.insertplaylist(us);
@@ -113,7 +114,7 @@ public class contoller {
     public  album deletealbum(@RequestParam Long id) {
         return  (album) services.deletalbum(id);
     }
-    @PostMapping("/insertalbum")
+    @PostMapping("/updatealbum")
     @ResponseStatus(HttpStatus.CREATED)
     public album updatealbum(@RequestBody album us) {
         return  (album) services.updatealbum(us);
@@ -128,12 +129,12 @@ public class contoller {
     public follows insertfoollow(@RequestBody follows us) {
         return   services.insertfollow(us);
     }
-    @DeleteMapping("/deletefollow")
+  @DeleteMapping("/deletefollow")
     @ResponseBody
     public  follows deletefollow(@RequestParam List<Long> id) {
         return  services.deletefollow(id.get(0),id.get(1));
     }
-    @GetMapping("/checkfollowing")
+     @GetMapping("/checkfollowing")
     @ResponseBody
     public  follows checkfollowing(@RequestParam List<Long> id) {
         return  services.checkfollowing(id.get(0),id.get(1));
@@ -158,7 +159,7 @@ public class contoller {
     public comment insertcomment(@RequestBody comment l) {
         return   services.insertcomment(l);
     }
-    @DeleteMapping("/deletelike")
+    @DeleteMapping("/deletecomment")
     @ResponseBody
     public  comment deletecomment(@RequestParam Long id) {
         return  services.deletecomment(id);

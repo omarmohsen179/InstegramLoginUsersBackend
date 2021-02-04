@@ -15,8 +15,8 @@ public interface hashtagResptiry  extends CrudRepository<hashtag,Long> {
     List<hashtag> posthash(Long postid);
     @Query(value="INSERT INTO post_hashtag (postid, hashtagid) VALUES (?1,?2); ",nativeQuery=true)
     hashtag_post addposthashtag(Long postid,Long hashtagid);
-    @Query(value="SELECT hashtagid,hashtag FROM hashtag where hashtag LIKE '%?1%' OR hashtag LIKE '?1%'  OR hashtag LIKE '%?1' ",nativeQuery=true)
+    @Query(value="SELECT * FROM hashtag where hashtag LIKE '%?1%' OR hashtag LIKE '?1%'  OR hashtag LIKE '%?1' ",nativeQuery=true)
     List<hashtag> searchhashtag(String hashtag);
-    @Query(value="SELECT hashtagid,hashtag FROM user where hashtag =?1 ",nativeQuery=true)
+    @Query(value="SELECT * FROM hashtag  where hashtag =?1 ",nativeQuery=true)
     hashtag checkhashtag(String hashtag);
 }
