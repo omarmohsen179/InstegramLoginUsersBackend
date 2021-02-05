@@ -19,6 +19,6 @@ public interface userResptiry extends CrudRepository<user,Long>{
     @Query(value="SELECT u.* FROM user u  where u.userid=?1 ",nativeQuery=true)
     user getuser(Long userid);
 
-    @Query(value="SELECT username, imageurl FROM user where username LIKE '%?1%' OR username LIKE '?1%'  OR username LIKE '%?1'",nativeQuery=true)
+    @Query(value="SELECT * FROM user WHERE username LIKE ?1% or username LIKE %?1",nativeQuery=true)
     List<user>  seachusername(String us);
 }
