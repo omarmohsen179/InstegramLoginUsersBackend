@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-//https://git.heroku.com/fullbackendapplication.git
+//https://git.heroku.com/myback0100.git
 @RequestMapping("/")
 @CrossOrigin(origins = "*")
 @RestController
@@ -46,7 +46,6 @@ public class contoller {
     @ResponseBody
     public List<post> gethomeposts(@RequestParam Long id) {
        // http://localhost:8080/home?id=2
-
         return  (List<post>) services.homeposts(id);
     }
     @PostMapping("/login")
